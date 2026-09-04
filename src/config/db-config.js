@@ -1,6 +1,6 @@
 const DBConfig = {
     host        : 'localhost',
-    database    : 'TP08',
+    database    : 'DAI',
     user        : 'postgres',
     password    : 'root',
     port        : 5432 

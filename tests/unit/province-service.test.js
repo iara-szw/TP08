@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 
-import ProvinceService from './src/services/province-service.js';
+import ProvinceService from '../../src/services/province-service.js';
 
 test('ProvinceService - getAllAsync devuelve todas las provincias', async () => {
     // Arrange

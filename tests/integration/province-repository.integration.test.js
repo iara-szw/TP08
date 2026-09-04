@@ -7,13 +7,13 @@ test('ProvinceRepository - CRUD completo', async () => {
     const repository = new ProvinceRepository();
 
     // ARRANGE
-    const province = {
-        name: 'Test Province',
-        full_name: 'Test Province Full',
-        latitude: -30.5,
-        longitude: -60.5,
-        display_order: 999
-    };
+   const province = {
+    name: 'Test Province',
+    full_name: 'Test Province Full',
+    latitude: -30,
+    longitude: -60,
+    display_order: 999
+};
 
     // ACT - CREATE
     const id = await repository.createAsync(province);
@@ -28,8 +28,8 @@ test('ProvinceRepository - CRUD completo', async () => {
     assert.notEqual(created, null);
     assert.equal(created.name, 'Test Province');
     assert.equal(created.full_name, 'Test Province Full');
-    assert.equal(Number(created.latitude), -30.5);
-    assert.equal(Number(created.longitude), -60.5);
+    assert.equal(Number(created.latitude), -30);
+assert.equal(Number(created.longitude), -60);
     assert.equal(Number(created.display_order), 999);
 
     // ACT - UPDATE

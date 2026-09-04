@@ -4,7 +4,7 @@ import dotenv from 'dotenv';
 
 dotenv.config();
 
-const DEFAULT_LOG_FILE_PATH = './logs';
+const DEFAULT_LOG_FILE_PATH = 'TP08/logs';
 const DEFAULT_LOG_FILE_NAME = '';
 const DEFAULT_LOG_TO_FILE_ENABLED = true;
 const DEFAULT_LOG_TO_CONSOLE_ENABLED = true;
