@@ -1,0 +1,30 @@
+2026-09-04T11:49:33.700Z: AggregateError - 
+Stack Trace:
+AggregateError [ECONNREFUSED]: 
+    at C:\Users\49193480\TP08\node_modules\pg-pool\index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async ProvinceRepository.createAsync (file:///C:/Users/49193480/TP08/src/repositories/province-repository.js:74:30)
+    at async TestContext.<anonymous> (file:///C:/Users/49193480/TP08/tests/integration/province-repository.integration.test.js:19:16)
+    at async Test.run (node:internal/test_runner/test:1110:7)
+    at async startSubtestAfterBootstrap (node:internal/test_runner/harness:358:3)
+
+2026-09-04T11:50:35.791Z: AggregateError - 
+Stack Trace:
+AggregateError [ECONNREFUSED]: 
+    at C:\Users\49193480\TP08\node_modules\pg-pool\index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async ProvinceRepository.createAsync (file:///C:/Users/49193480/TP08/src/repositories/province-repository.js:74:30)
+    at async TestContext.<anonymous> (file:///C:/Users/49193480/TP08/tests/integration/province-repository.integration.test.js:19:12)
+    at async Test.run (node:internal/test_runner/test:1110:7)
+    at async startSubtestAfterBootstrap (node:internal/test_runner/harness:358:3)
+
+2026-09-04T11:51:28.721Z: AggregateError - 
+Stack Trace:
+AggregateError [ECONNREFUSED]: 
+    at C:\Users\49193480\TP08\node_modules\pg-pool\index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async ProvinceRepository.createAsync (file:///C:/Users/49193480/TP08/src/repositories/province-repository.js:74:30)
+    at async TestContext.<anonymous> (file:///C:/Users/49193480/TP08/tests/integration/province-repository.integration.test.js:19:16)
+    at async Test.run (node:internal/test_runner/test:1110:7)
+    at async startSubtestAfterBootstrap (node:internal/test_runner/harness:358:3)
+

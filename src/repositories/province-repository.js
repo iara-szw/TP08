@@ -74,6 +74,7 @@ export default class ProvinceRepository {
             const resultPg = await this.getDBPool().query(sql, values);
             newId = resultPg.rows[0].id;
         } catch (error) {
+            console.error('ERROR CREATE:', error);
             LogHelper.logError(error);
         }
         return newId;
