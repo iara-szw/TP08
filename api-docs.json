@@ -1,0 +1,203 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "Mi API en Node.js",
+    "description": "Documentación generada automáticamente con swagger-autogen",
+    "version": "1.0.0"
+  },
+  "host": "localhost:3000",
+  "basePath": "/",
+  "schemes": [
+    "http"
+  ],
+  "paths": {
+    "/api/province/": {
+      "get": {
+        "tags": [
+          "Provinces"
+        ],
+        "description": "Obtiene un listado completo de todas las provincias registradas.",
+        "responses": {
+          "200": {
+            "description": "Lista de provincias obtenida con éxito.",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "number",
+                    "example": 1
+                  },
+                  "name": {
+                    "type": "string",
+                    "example": "Buenos Aires"
+                  }
+                }
+              },
+              "xml": {
+                "name": "main"
+              }
+            }
+          },
+          "500": {
+            "description": "Error interno del servidor."
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Provinces"
+        ],
+        "description": "Registra una nueva provincia en el sistema.",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Datos requeridos para crear la provincia",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string",
+                  "example": "Córdoba"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Provincia creada con éxito. Devuelve el ID generado.",
+            "schema": {
+              "type": "number",
+              "example": 2,
+              "xml": {
+                "name": "main"
+              }
+            }
+          },
+          "400": {
+            "description": "Solicitud incorrecta o datos inválidos."
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Provinces"
+        ],
+        "description": "Actualiza los datos de una provincia existente enviando sus propiedades en el cuerpo de la solicitud.",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Entidad completa de la provincia a modificar, incluyendo obligatoriamente su ID numérico.",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "number",
+                  "example": 1
+                },
+                "name": {
+                  "type": "string",
+                  "example": "Buenos Aires Modificado"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Provincia actualizada. Devuelve la cantidad de filas afectadas.",
+            "schema": {
+              "type": "number",
+              "example": 1,
+              "xml": {
+                "name": "main"
+              }
+            }
+          },
+          "400": {
+            "description": "El ID es inválido o no fue enviado en el cuerpo."
+          },
+          "404": {
+            "description": "No se encontró la provincia con el ID provisto."
+          }
+        }
+      }
+    },
+    "/api/province/{id}": {
+      "get": {
+        "tags": [
+          "Provinces"
+        ],
+        "description": "Busca y devuelve una provincia específica a partir de su ID de ruta.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "description": "ID único numérico de la provincia"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Provincia encontrada.",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "number",
+                  "example": 1
+                },
+                "name": {
+                  "type": "string",
+                  "example": "Buenos Aires"
+                }
+              },
+              "xml": {
+                "name": "main"
+              }
+            }
+          },
+          "404": {
+            "description": "No se encontró la provincia con el ID especificado."
+          },
+          "500": {
+            "description": "Error interno del servidor."
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Provinces"
+        ],
+        "description": "Elimina de forma permanente una provincia por su ID de ruta.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "description": "ID de la provincia a eliminar"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Provincia eliminada exitosamente."
+          },
+          "404": {
+            "description": "No se encontró la provincia con el ID especificado."
+          },
+          "500": {
+            "description": "Error interno del servidor."
+          }
+        }
+      }
+    }
+  }
+}
