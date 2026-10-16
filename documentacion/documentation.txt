@@ -1,0 +1,104 @@
+Documentación del proyecto - API de Provincias
+
+1. Descripción del proyecto
+Este proyecto implementa una API REST para gestionar provincias de Argentina. La aplicación expone un conjunto de operaciones para listar provincias, consultar una provincia por su identificador, crear una nueva provincia, actualizar una provincia existente y eliminar una provincia.
+
+La solución está desarrollada con Node.js y Express, utiliza PostgreSQL como base de datos y está documentada con Swagger UI. El proyecto sigue una estructura en capas: controladores, servicios, repositorios, entidades, configuración y pruebas.
+
+2. Justificación de la API elegida
+La API seleccionada es una API de gestión de provincias porque es simple, práctica y representativa de un servicio CRUD clásico. Permite demostrar la arquitectura típica de una aplicación backend de manera clara:
+
+- Manejo de peticiones en la capa de controladores
+- Lógica de negocio en la capa de servicios
+- Lógica de persistencia en la capa de repositorios
+- Validación y respuestas estructuradas
+- Documentación mediante Swagger
+
+Esto la convierte en una opción ideal para aprender diseño de APIs backend, manejo de datos y documentación automatizada.
+
+3. Listado de endpoints
+URL base: http://localhost:3000
+
+GET /api/province
+- Devuelve todas las provincias
+- Estado: 200 OK
+
+GET /api/province/:id
+- Devuelve una provincia por su ID
+- Estado: 200 OK
+- Estado: 404 Not Found cuando el registro no existe
+
+POST /api/province
+- Crea una nueva provincia
+- Ejemplo de cuerpo: { "name": "Córdoba" }
+- Estado: 201 Created
+- Estado: 400 Bad Request cuando los datos son inválidos
+
+PUT /api/province
+- Actualiza una provincia existente
+- Ejemplo de cuerpo: { "id": 1, "name": "Buenos Aires" }
+- Estado: 200 OK
+- Estado: 400 Bad Request si el ID es inexistente o inválido
+- Estado: 404 Not Found si la provincia no existe
+
+DELETE /api/province/:id
+- Elimina una provincia por ID
+- Estado: 200 OK
+- Estado: 404 Not Found si la provincia no existe
+
+4. Capturas de pantalla de Swagger
+Ver archivos en la carpeta documentacion
+
+5. Explicación de la implementación de Swagger
+Swagger se implementa en la aplicación combinando Swagger UI con un documento Swagger JSON generado.
+
+Los puntos principales de integración son:
+- La aplicación carga la especificación JSON desde api-docs.json
+- Swagger UI se monta en la ruta /api-docs
+- La aplicación registra la ruta con app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument))
+- Cada ruta en el controlador incluye anotaciones Swagger con comentarios como #swagger.tags, #swagger.description, #swagger.parameters y #swagger.responses
+
+Esto permite que la documentación de la API se genere y se visualice de forma automática, facilitando la prueba de endpoints y la comprensión del contrato del servicio.
+
+6. Problemas encontrados y cómo fueron solucionados
+Problema 1: El comando de inicio de la aplicación apuntaba al archivo incorrecto.
+- Causa: package.json usaba el script "nodemon src/app.js".
+- Problema: src/app.js solo crea y exporta la aplicación Express; no inicia el servidor.
+- Solución: Se corrigió el script para usar el punto de entrada real del servidor: src/server.js.
+
+Problema 2: El servidor no se quedaba ejecutando al arrancar.
+- Causa: el archivo ejecutado no llamaba a app.listen().
+- Solución: Se inició la aplicación desde src/server.js, que sí ejecuta app.listen(3000).
+
+Problema 3: La configuración de la ruta de Swagger necesitaba montarse correctamente.
+- Causa: el archivo de documentación y la ruta no se estaban sirviendo correctamente si la app se iniciaba desde el archivo equivocado.
+- Solución: La aplicación incluye el middleware de Swagger UI y carga el archivo generado api-docs.json antes de servirlo.
+
+7. Evidencias de las pruebas realizadas
+El proyecto incluye pruebas unitarias, de integración y E2E que cubren la lógica de la API de provincias.
+
+Ejemplos de cobertura de pruebas:
+- Validación de payloads de entrada
+- Comportamiento CRUD del repositorio
+- Respuestas del servicio
+- Validación del flujo HTTP mediante pruebas de la API
+
+Evidencias observadas:
+- Las pruebas unitarias validan reglas de negocio como payloads inválidos y respuestas esperadas.
+- Las pruebas de integración validan el comportamiento del repositorio con la capa de base de datos.
+- Las pruebas E2E validan flujos completos de la API para lectura, creación, actualización y eliminación.
+
+El proyecto también cuenta con una estructura de scripts para ejecutar pruebas por separado:
+- npm run test:unit
+- npm run test:integration
+- npm run test:e2e
+
+8. Acceso a Swagger
+Para acceder a la documentación de la API, se debe abrir la siguiente URL en el navegador:
+
+http://localhost:3000/api-docs
+
+Esta página muestra la interfaz Swagger UI con la documentación completa de todos los endpoints disponibles.
+
+Conclusión
+Este proyecto demuestra una API completa de CRUD para la gestión de provincias, con una capa backend organizada, documentación automática y validación mediante pruebas. Swagger ofrece una interfaz clara y dinámica para explorar y probar los endpoints de la aplicación.

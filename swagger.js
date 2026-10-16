@@ -4,7 +4,7 @@ import swaggerAutogen from 'swagger-autogen';
 const swaggerAutogenInstance = swaggerAutogen();
 
 const outputFile = './api-docs.json'; 
-const endpointsFiles = ['./src/app.js']; // Cambia por index.js si corresponde
+const endpointsFiles = ['./src/app.js']; 
 
 const doc = {
   info: {
@@ -15,5 +15,4 @@ const doc = {
   schemes: ['http'],
 };
 
-// Se ejecuta usando la instancia creada arriba
 swaggerAutogenInstance(outputFile, endpointsFiles, doc);
